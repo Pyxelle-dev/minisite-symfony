@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{ article.title }} · MiniSite{% endblock %}
+
+{% block body %}
+  <article class="card">
+    <h1 style="margin-top:0;">{{ article.title }}</h1>
+    <p class="muted">{{ article.excerpt }}</p>
+    <hr style="border:none; border-top:1px solid #e2e8f0; margin:16px 0;">
+    <p>{{ article.content }}</p>
+
+    <p style="margin-top:16px;">
+      <a class="btn" href="{{ path('article_index') }}">← Retour aux articles</a>
+    </p>
+  </article>
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+{% block title %}Contact · MiniSite{% endblock %}
+
+{% block body %}
+  <h1>Contact</h1>
+
+  {# messages flash (succès) #}
+  {% for label, messages in app.flashes %}
+    {% for msg in messages %}
+      <div class="card" role="status" aria-live="polite">{{ msg }}</div>
+    {% endfor %}
+  {% endfor %}
+
+  <div class="card">
+    {{ form_start(form) }}
+      <div style="display:grid; gap:12px;">
+        {{ form_row(form.name) }}
+        {{ form_row(form.email) }}
+        {{ form_row(form.message) }}
+      </div>
+
+      <button class="btn btn-primary" style="margin-top:12px;">Envoyer</button>
+    {{ form_end(form) }}
+  </div>
+
+  <p class="muted" style="margin-top:8px;">
+    En mode développement, le mail n’est pas réellement expédié : tu peux le voir dans la barre de debug Symfony (icône “emails”).
+  </p>
+{% endblock %}

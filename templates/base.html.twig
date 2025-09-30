@@ -1,17 +1,43 @@
+{# 1 Base commune réutilisée par toutes les pages #}
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>">
-        {% block stylesheets %}
-        {% endblock %}
+<html lang="fr">
+  <head>
+    {# 2 Bloc modifiable par les pages filles pour changer le <title> #}
+    <title>{% block title %}MiniSite{% endblock %}</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <script src="{{ asset('js/script.js') }}" defer></script>
 
-        {% block javascripts %}
-            {% block importmap %}{{ importmap('app') }}{% endblock %}
-        {% endblock %}
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-    </body>
+
+    {# 3 Petit style pour que ce soit propre visuellement #}
+    <style>
+      body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial; margin: 0; background: #f7fafc; color:#1a202c; }
+      header { background: white; border-bottom: 1px solid #e2e8f0; padding: 16px 24px; position: sticky; top:0; }
+      header a { text-decoration:none; color:#2b6cb0; margin-right: 12px; }
+      main { max-width: 860px; margin: 32px auto; padding: 0 16px; }
+      .card { background:white; border:1px solid #e2e8f0; border-radius: 12px; padding: 16px 20px; margin-bottom: 16px; }
+      .btn { display:inline-block; padding:10px 14px; border-radius:10px; border:1px solid #cbd5e0; text-decoration:none; }
+      .btn-primary { background:#2b6cb0; color:white; border-color:#2b6cb0; }
+      .muted { color:#4a5568; }
+    </style>
+  </head>
+  <body>
+    <header>
+      {# 4 Menu global #}
+      <a href="{{ path('home') }}">Accueil</a>
+      <a href="{{ path('article_index') }}">Articles</a>
+      <a href="{{ path('about') }}">À propos</a>
+      <a href="{{ path('contact') }}">Contact</a>
+      <a href="{{ path('weather') }}">Météo</a>
+    </header>
+
+    </header>
+
+    <main>
+      {# 5 Zone principale que les pages enfants remplissent #}
+      {% block body %}{% endblock %}
+    </main>
+  </body>
 </html>
+

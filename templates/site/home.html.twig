@@ -1,0 +1,16 @@
+{# 1 On “étend” la base pour réutiliser le layout #}
+{% extends 'base.html.twig' %}
+
+{# 2 On change le titre de l’onglet #}
+{% block title %}Accueil · MiniSite{% endblock %}
+
+{# 3 Contenu principal #}
+{% block body %}
+  <div class="card">
+    <h1>Bienvenue 👋</h1>
+    <p class="muted">Petit site de démonstration avec Symfony : Accueil, liste d’articles, page détail.</p>
+    <p>
+      <a class="btn btn-primary" href="{{ path('article_index') }}">Voir les articles</a>
+    </p>
+  </div>
+{% endblock %}

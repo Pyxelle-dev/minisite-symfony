@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+{% block title %}Articles · MiniSite{% endblock %}
+
+{% block body %}
+  <h1>Articles</h1>
+
+  {# 1 On boucle sur la variable "articles" envoyée par le contrôleur #}
+  {% for a in articles %}
+    <article class="card">
+      <h2 style="margin:0 0 6px 0;">
+        <a href="{{ path('article_show', {id: a.id}) }}">
+          {{ a.title }}
+        </a>
+      </h2>
+      <p class="muted" style="margin:0 0 10px 0;">{{ a.excerpt }}</p>
+      <a class="btn" href="{{ path('article_show', {id: a.id}) }}">Lire</a>
+    </article>
+  {% else %}
+    {# 2 Si aucun article #}
+    <p class="muted">Aucun article pour l’instant.</p>
+  {% endfor %}
+{% endblock %}
